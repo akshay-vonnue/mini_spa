@@ -32,3 +32,8 @@ nav a {
     align-items:  center;
     background-color: white;
 }
+
+button{
+    padding: 0px 10px;
+    border-radius: 10px;
+}

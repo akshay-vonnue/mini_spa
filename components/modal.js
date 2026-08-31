@@ -38,5 +38,14 @@ export function Modal(type,id = null) {
         modal.remove()
     })
 
+
+    // event listeners
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          modal.remove();
+        }
+    });
+
     return modal
 }
