@@ -1,4 +1,5 @@
 import { store } from "../js/main.js";
+import { Button } from "./button.js";
 
 export function Card(id,text) {
     let p = document.createElement("p")
@@ -13,16 +14,17 @@ export function Card(id,text) {
     isCompletedBox.addEventListener("change", () => {
         store.dispatch({type:'TASK_TOGGLED',payload:id})
     })
+    // delete button
+    const deleteBtn = Button("delete", () => {
+        store.dispatch({type:'TASK_DELETED',payload:id})
+    })
     
     let todoWrapper = document.createElement("div")
     
     todoWrapper.classList.add('todo-wrapper')
     todoWrapper.appendChild(p)
     todoWrapper.append(isCompletedBox)
-
-    // const deleteBtn = document.
-
-
+    todoWrapper.append(deleteBtn)
 
     return todoWrapper
 }

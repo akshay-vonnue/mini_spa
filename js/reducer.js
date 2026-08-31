@@ -29,9 +29,7 @@ export function reducer(state, action) {
             })
         
         case "TASK_DELETED":
-            return state.filter(stateItem => {
-                stateItem.id !== action.payload
-            })
+            return state.filter(stateItem => stateItem.id !== action.payload)
         
         case "CLEAR_TASKS":
             console.log("clearing tasks...")
