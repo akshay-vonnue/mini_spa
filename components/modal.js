@@ -1,15 +1,22 @@
 import { store } from "../js/main.js"
 
-export function Modal(type,id = null) {
+export function Modal(type, id = null) {
     console.log("modal...")
+    let state = store.getState()
 
     const modal = document.createElement("div")
     modal.classList.add("modal")
 
+    let task;
+    if (type === 'edit') {
+        task = state.find(taskItem => taskItem.id === id)
+        console.log(task)
+    }
+
     modal.innerHTML = `
         <form class="modal-form">
             <label for="task">task</label>
-            <input type="text" id="task" required name="task">
+            <input type="text" id="task" value="${type === 'edit' ? task.text : ''}" required name="task">
             <button>
                 ${type === 'edit' ? 'Submit' : 'Add'}
             </button>

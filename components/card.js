@@ -1,5 +1,6 @@
 import { store } from "../js/main.js";
 import { Button } from "./button.js";
+import { Modal } from "./modal.js";
 
 export function Card(id,text) {
     let p = document.createElement("p")
@@ -18,6 +19,12 @@ export function Card(id,text) {
     const deleteBtn = Button("delete", () => {
         store.dispatch({type:'TASK_DELETED',payload:id})
     })
+
+    // edit button
+    const editBtn = Button("Edit", () => {
+        let modalCard = Modal("edit", id)
+        document.body.appendChild(modalCard)
+    })
     
     let todoWrapper = document.createElement("div")
     
@@ -25,6 +32,7 @@ export function Card(id,text) {
     todoWrapper.appendChild(p)
     todoWrapper.append(isCompletedBox)
     todoWrapper.append(deleteBtn)
+    todoWrapper.append(editBtn)
 
     return todoWrapper
 }

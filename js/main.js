@@ -36,5 +36,7 @@ document.querySelectorAll("[data-path]").forEach(element => {
 
 // subscribes
 store.subscribe(() => {
+    let state = store.getState()
+    console.log(state)
     router.route()
 })
