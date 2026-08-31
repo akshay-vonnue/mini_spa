@@ -4,7 +4,7 @@ import { createStore } from './store.js'
 import { reducer } from './reducer.js'
 
 
-const initialState = [
+let initialState = [
     {
         id: 0,
         text: 'wake up',
@@ -18,6 +18,13 @@ const initialState = [
 ]
 
 let router = createRouter()
+
+let persistedState = localStorage.getItem("tasks")
+if (persistedState) {
+    let data = JSON.parse(persistedState)
+    initialState = data
+}
+
 export let store = createStore(initialState, reducer);
 
 

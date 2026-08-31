@@ -29,6 +29,8 @@ export function renderListPage(store,router) {
 
     })
 
+    openModalBtn.className ='add-button'
+
     app.appendChild(openModalBtn)
 
 
@@ -86,6 +88,8 @@ export function renderSettingsPage(store) {
         "Clear all tasks",
         () => store.dispatch({type:'CLEAR_TASKS'})
     )
+
+    clearAllBtn.className = 'clear-button'
 
     app.appendChild(clearAllBtn)
 }

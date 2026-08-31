@@ -9,6 +9,10 @@ export function createStore(initialState,reducer) {
     function dispatch(action) {
         state = reducer(state, action)
         listeners.forEach(listener => listener())
+
+        // SET STORAGE
+        localStorage.setItem("tasks",JSON.stringify(state))
+
         console.log("inside dispatch...")
         console.log(state)
         return state
