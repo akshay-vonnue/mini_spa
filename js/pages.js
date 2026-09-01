@@ -1,15 +1,23 @@
 import { Button } from "../components/button.js"
 import { Card } from "../components/card.js"
 import { Modal } from "../components/modal.js"
-import { store } from "./main.js"
 
 let app = document.querySelector(".app")
 console.log(app)
 
 
+function animatePage() {
+    app.classList.remove('fade-in-animation')
+    void app.offsetWidth
+    app.classList.add('fade-in-animation')
+}
+
+
 export function renderHomePage() {
     console.log("rendering home..")
     app.replaceChildren()
+    
+    animatePage()
 
     let heading = document.createElement("h1")
     heading.innerText = 'TASK MANAGER';
@@ -20,6 +28,8 @@ export function renderHomePage() {
 export function renderListPage(store,router) {
     console.log("rendering list..")
     app.replaceChildren()
+
+    animatePage()
 
     let openModalBtn = Button("Add",() => {
         console.log("modal button clicked")
@@ -84,6 +94,8 @@ export function renderSettingsPage(store) {
     console.log("rendering settings..")
     app.replaceChildren()
 
+    animatePage()
+
     let clearAllBtn = Button(
         "Clear all tasks",
         () => store.dispatch({type:'CLEAR_TASKS'})
@@ -96,9 +108,12 @@ export function renderSettingsPage(store) {
 
 export function renderDetailPage(todoId, store) {
     let state = store.getState()
-
+    
     console.log("rendering todo with id:", todoId)
     app.replaceChildren()
+
+    animatePage()
+
     let component = document.createElement("h2")
     component.innerText = todoId
 

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "vitest": "^4.1.11"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.11",
+    "jsdom": "^30.0.1"
+  }
+}
