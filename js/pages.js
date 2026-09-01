@@ -1,10 +1,10 @@
 import { Button } from "../components/button.js"
 import { Card } from "../components/card.js"
 import { Modal } from "../components/modal.js"
+import { store } from "./main.js"
 
 let app = document.querySelector(".app")
 console.log(app)
-
 
 
 export function renderHomePage() {
@@ -94,7 +94,31 @@ export function renderSettingsPage(store) {
     app.appendChild(clearAllBtn)
 }
 
-export function renderDetailPage(todoId) {
+export function renderDetailPage(todoId, store) {
+    let state = store.getState()
+
     console.log("rendering todo with id:", todoId)
     app.replaceChildren()
+    let component = document.createElement("h2")
+    component.innerText = todoId
+
+    app.appendChild(component)
+
+    console.log(todoId)
+    console.log(state)
+    let task = state.find(task => task.id == todoId)
+    console.log(`inside rendering details page with`,task)
+    const taskCard = Card(todoId, task.text)
+    
+    app.appendChild(taskCard)
+}
+
+export function render404Page() {
+    console.log("##### 404 #####")
+    app.replaceChildren()
+
+    let h4 = document.createElement("h4")
+    h4.innerText = '404: page not found'
+
+    app.appendChild(h4)
 }

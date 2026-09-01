@@ -1,5 +1,10 @@
-export function createStore(initialState,reducer) {
-    let state = initialState
+export function createStore(initialState, reducer) {
+    
+    let persistedState = localStorage.getItem("tasks")
+    let state = persistedState
+        ? JSON.parse(persistedState)
+        : initialState
+
     let listeners = []
 
     function getState() {

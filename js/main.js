@@ -17,13 +17,7 @@ let initialState = [
     }
 ]
 
-let router = createRouter()
-
-let persistedState = localStorage.getItem("tasks")
-if (persistedState) {
-    let data = JSON.parse(persistedState)
-    initialState = data
-}
+export const router = createRouter()
 
 export let store = createStore(initialState, reducer);
 
@@ -31,7 +25,7 @@ export let store = createStore(initialState, reducer);
 router.register("/home", renderHomePage)
 router.register("/list", ()=>renderListPage(store,router))
 router.register("/detail/:id", renderDetailPage)
-router.register("/settings", ()=>renderSettingsPage(store))
+router.register("/settings", () => renderSettingsPage(store))
 
 document.querySelectorAll("[data-path]").forEach(element => {
     element.addEventListener("click", (e) => {

@@ -1,14 +1,17 @@
 import { store } from "../js/main.js";
 import { Button } from "./button.js";
 import { Modal } from "./modal.js";
+import { router } from "../js/main.js";
 
 export function Card(id,text) {
     let p = document.createElement("p")
     p.innerText = text
+    
     // listener for detail page
     p.addEventListener('click', () => {
         router.navigate(`/detail/${id}`)
     })
+
     let isCompletedBox = document.createElement("input")
     isCompletedBox.setAttribute("type", "checkbox")
     // listener for isComplete

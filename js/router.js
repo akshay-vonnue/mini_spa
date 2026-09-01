@@ -1,3 +1,6 @@
+import { render404Page } from "./pages.js"
+import { store } from "./main.js"
+
 export function createRouter() {
     const routes = []
 
@@ -25,11 +28,12 @@ export function createRouter() {
             let todoId = detailPathParams[2]
             let route = routes.find(route => route.path === '/detail/:id')
 
-             if (!route) {
+            if (!route) {
+                render404Page()
                 console.log("page 404")
                 return
             }
-            route.component(todoId)
+            route.component(todoId,store)
 
             return
         }
@@ -46,6 +50,7 @@ export function createRouter() {
         console.log(route)
 
         if (!route) {
+            render404Page()
             console.log('page 404')
             return
         }
